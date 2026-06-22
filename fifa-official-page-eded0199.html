@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>世界杯简明指南 · 官方信息</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    body {
+      font-family: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Helvetica, Arial, sans-serif;
+      background: #f0f2f5;
+      color: #1e293b;
+      line-height: 1.6;
+      padding: 2rem 1.2rem;
+    }
+    .page {
+      max-width: 1120px;
+      margin: 0 auto;
+    }
+
+    /* hero */
+    .hero {
+      background: #ffffff;
+      border-radius: 32px;
+      box-shadow: 0 8px 24px rgba(0,0,0,0.04);
+      padding: 2.8rem 2rem 2.4rem;
+      margin-bottom: 2.4rem;
+      border: 1px solid #e9edf2;
+    }
+    .hero h1 {
+      font-size: 2.2rem;
+      font-weight: 600;
+      letter-spacing: -0.02em;
+      color: #0f172a;
+      margin-bottom: 0.75rem;
+    }
+    .hero p {
+      font-size: 1.1rem;
+      color: #334155;
+      max-width: 680px;
+    }
+    .hero .tagline {
+      display: inline-block;
+      background: #eef2f6;
+      padding: 0.3rem 1rem;
+      border-radius: 40px;
+      font-size: 0.85rem;
+      color: #1e293b;
+      margin-top: 1.2rem;
+    }
+
+    /* cards grid */
+    .cards-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 1.5rem;
+      margin-bottom: 2.4rem;
+    }
+    @media (min-width: 640px) {
+      .cards-grid {
+        grid-template-columns: 1fr 1fr;
+      }
+    }
+    .card {
+      background: #ffffff;
+      border-radius: 24px;
+      padding: 1.8rem 1.6rem;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.03);
+      border: 1px solid #e2e8f0;
+      transition: box-shadow 0.2s, border-color 0.2s;
+    }
+    .card:hover {
+      border-color: #cbd5e1;
+      box-shadow: 0 8px 20px rgba(0,0,0,0.05);
+    }
+    .card h2 {
+      font-size: 1.3rem;
+      font-weight: 600;
+      margin-bottom: 0.6rem;
+      color: #0f172a;
+    }
+    .card p {
+      color: #334155;
+      font-size: 0.98rem;
+    }
+    .card .meta {
+      display: inline-block;
+      font-size: 0.75rem;
+      color: #64748b;
+      background: #f1f4f8;
+      padding: 0.2rem 0.6rem;
+      border-radius: 20px;
+      margin-top: 0.8rem;
+    }
+
+    /* wide card (特殊用途卡片) */
+    .card-wide {
+      grid-column: 1 / -1;
+    }
+
+    /* 自然链接段落区块 */
+    .link-section {
+      background: #ffffff;
+      border-radius: 28px;
+      padding: 2rem 2rem 2.2rem;
+      border: 1px solid #e2e8f0;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.02);
+      margin-bottom: 2rem;
+    }
+    .link-section h2 {
+      font-size: 1.3rem;
+      font-weight: 600;
+      margin-bottom: 0.75rem;
+      color: #0f172a;
+    }
+    .link-section p {
+      color: #1e293b;
+      font-size: 1rem;
+      margin-bottom: 0.8rem;
+    }
+    .link-section a {
+      color: #2563eb;
+      text-decoration: none;
+      font-weight: 500;
+      border-bottom: 1px solid rgba(37,99,235,0.2);
+      transition: border-color 0.15s;
+    }
+    .link-section a:hover {
+      border-bottom-color: #2563eb;
+    }
+
+    /* 提示 / FAQ 卡片 (带小图标风格) */
+    .faq-tip {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1.2rem;
+      margin-bottom: 2rem;
+    }
+    .tip-item {
+      flex: 1 1 200px;
+      background: #ffffff;
+      border-radius: 20px;
+      padding: 1.4rem 1.2rem;
+      border: 1px solid #e2e8f0;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.02);
+    }
+    .tip-item .emoji-marker {
+      font-size: 1.4rem;
+      margin-right: 0.3rem;
+    }
+    .tip-item h3 {
+      font-size: 1rem;
+      font-weight: 600;
+      margin-bottom: 0.2rem;
+      display: flex;
+      align-items: center;
+      gap: 0.3rem;
+      color: #0f172a;
+    }
+    .tip-item p {
+      font-size: 0.9rem;
+      color: #334155;
+    }
+
+    /* 适合人群卡片 (单独一行, 做成三个小标签风格) */
+    .audience-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1rem;
+      margin-bottom: 2rem;
+    }
+    .audience-tag {
+      background: #ffffff;
+      border-radius: 100px;
+      padding: 0.6rem 1.6rem;
+      border: 1px solid #dce2ec;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.02);
+      font-size: 0.95rem;
+      color: #0f172a;
+      font-weight: 500;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+    }
+    .audience-tag span {
+      opacity: 0.7;
+      font-weight: 400;
+      color: #475569;
+    }
+
+    /* 页脚 */
+    .footer-note {
+      text-align: center;
+      padding: 1.8rem 0 0.6rem;
+      font-size: 0.8rem;
+      color: #64748b;
+      border-top: 1px solid #e2e8f0;
+      margin-top: 1.2rem;
+    }
+
+    /* 响应式微调 */
+    @media (max-width: 480px) {
+      .hero h1 {
+        font-size: 1.7rem;
+      }
+      .hero {
+        padding: 1.8rem 1.2rem;
+      }
+      .card {
+        padding: 1.4rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="page">
+
+    <!-- hero 主视觉 -->
+    <div class="hero">
+      <h1>世界杯 · 简明指南</h1>
+      <p>国际足联世界杯是全球最具影响力的足球赛事，每四年汇聚各国顶尖球队，在赛场上角逐最高荣誉。无论你是初次关注还是资深球迷，都可以在这里找到实用信息与可靠访问路径。</p>
+      <div class="tagline">基于官方信息 · 中立介绍</div>
+    </div>
+
+    <!-- 信息卡片式：用途卡片 + 适合人群（用 audience-row 呈现） -->
+    <div class="cards-grid">
+      <div class="card">
+        <h2>赛事查询</h2>
+        <p>获取最新赛程、历史战绩、积分排名以及官方统计数据。所有内容均以国际足联官方数据库为准，适合赛前分析与赛后回顾。</p>
+        <div class="meta">📅 实时更新</div>
+      </div>
+      <div class="card">
+        <h2>球队与球员</h2>
+        <p>浏览各参赛队伍的大名单、球员履历、进球记录与国家队出场数据。从传奇巨星到新锐天才，信息覆盖完整。</p>
+        <div class="meta">⚽ 官方数据</div>
+      </div>
+      <div class="card card-wide">
+        <h2>场馆与主办城市</h2>
+        <p>每届世界杯都会选在多个城市举行。官方页面提供场馆容量、交通指引、举办时间以及往届场馆历史，方便计划现场观赛或收看直播的用户提前了解。</p>
+        <div class="meta">📍 地理信息</div>
+      </div>
+    </div>
+
+    <!-- 适合人群 用三个标签式卡片 -->
+    <div class="audience-row">
+      <div class="audience-tag">🏟️ 新观众 <span>· 快速上手</span></div>
+      <div class="audience-tag">📊 数据分析爱好者 <span>· 权威统计</span></div>
+      <div class="audience-tag">📺 直播观众 <span>· 赛程提醒</span></div>
+    </div>
+
+    <!-- 自然链接段落 —— 将 a 标签嵌入句子中 -->
+    <div class="link-section">
+      <h2>访问官方平台</h2>
+      <p>
+        国际足联为全世界球迷设立了唯一官方信息门户，所有关于 
+        <a href="https://fifa-official-worldcup.com">世界杯</a> 
+        的赛程、新闻、视频集锦及历史数据均可在此获取。该网站提供多语言界面，移动端适配良好，适合随时查阅。
+      </p>
+      <p>
+        如果你正在寻找可靠的赛事动态或需要核对比赛时间，直接从官方渠道了解是避免信息过时或失实的最佳方式。 
+        <a href="https://fifa-official-worldcup.com">世界杯</a> 
+        页面聚合了每届赛事的基础数据与独家内容，同时也是官方授权商品的展示窗口。
+      </p>
+    </div>
+
+    <!-- FAQ 摘要 / 实用提示 (用 tip-item 卡片) -->
+    <div class="faq-tip">
+      <div class="tip-item">
+        <h3><span class="emoji-marker">📌</span> 访问提醒</h3>
+        <p>官方网站在大赛期间访问量较高，建议提前加载或使用稳定网络。部分内容可能因地区版权略有调整，以实际页面为准。</p>
+      </div>
+      <div class="tip-item">
+        <h3><span class="emoji-marker">🧭</span> 导航建议</h3>
+        <p>主页顶部菜单包含“赛事”“球队”“场馆”等分类，通过筛选年份可切换不同届次的世界杯信息，方便回溯历史。</p>
+      </div>
+      <div class="tip-item">
+        <h3><span class="emoji-marker">🔒</span> 官方标识</h3>
+        <p>请认准域名 fifa-official-worldcup.com ，勿轻信仿冒网站。所有官方公告、票务信息仅通过此渠道发布。</p>
+      </div>
+    </div>
+
+    <!-- 底部说明 -->
+    <div class="footer-note">
+      本页面为独立介绍页，内容基于公开信息整理，仅供参考。具体数据以国际足联官方发布为准。
+    </div>
+
+  </div>
+</body>
+</html>
